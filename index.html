@@ -225,6 +225,32 @@
   .opt-name{font-weight:600; color:var(--ink); font-size:15.5px;}
   .opt-desc{color:var(--slate); font-size:14.5px; margin-top:2px;}
 
+  /* ---------- CHECKLIST ---------- */
+  .checklist-groups{display:grid; grid-template-columns:1fr 1fr; gap:36px; margin-bottom:8px;}
+  .checklist-group h3{
+    font-family:'Big Shoulders Display', sans-serif; font-size:20px; text-transform:uppercase;
+    margin:0 0 14px; color:var(--glacier); border-bottom:1px solid var(--line); padding-bottom:8px;
+  }
+  .checklist{list-style:none; margin:0 0 26px; padding:0; display:flex; flex-direction:column; gap:10px;}
+  .checklist li{
+    display:flex; align-items:flex-start; gap:10px; font-size:15px; color:var(--ink);
+  }
+  .checklist li::before{
+    content:"";
+    flex:0 0 16px; width:16px; height:16px; margin-top:3px;
+    border:1.5px solid var(--ink); background:var(--paper);
+  }
+  .critical-box{
+    background:var(--white); border-left:3px solid var(--rust);
+    padding:18px 20px; margin-bottom:30px;
+  }
+  .critical-box h3{
+    font-family:'Big Shoulders Display', sans-serif; font-size:19px; text-transform:uppercase;
+    color:var(--rust); margin:0 0 10px;
+  }
+  .critical-box ul{margin:0; padding-left:20px;}
+  .critical-box li{margin-bottom:8px; color:var(--ink); font-size:15px;}
+
   /* ---------- FOOTER NOTES ---------- */
   .notes{background:var(--ink); color:var(--paper);}
   .notes h2.section-title{color:var(--paper);}
@@ -264,6 +290,7 @@
     <a href="#itinerario">Itinerario</a>
     <a href="#gastos-mensuales">Gastos mensuales</a>
     <a href="#opciones">Opciones</a>
+    <a href="#checklist">Checklist</a>
     <a href="#notas">Notas</a>
   </div>
 </nav>
@@ -403,7 +430,7 @@
 <section id="campings">
   <div class="eyebrow">En qué orden reservar · precio por sitio</div>
   <h2 class="section-title">Los 8 campings, uno por uno</h2>
-  <p class="section-intro">Reserven primero los sitios que comparten el circuito W y el O — se agotan antes. Los tres campings exclusivos del circuito O (Serón, Dickson, Los Perros) suelen tener algo más de holgura, pero igual conviene asegurarlos pronto porque Los Perros tiene capacidad reducida.</p>
+  <p class="section-intro">Conviene reservar primero los sitios que comparten el circuito W y el O — se agotan antes. Los tres campings exclusivos del circuito O (Serón, Dickson, Los Perros) suelen tener algo más de holgura, pero igual es recomendable asegurarlos pronto porque Los Perros tiene capacidad reducida.</p>
   <table>
     <thead>
       <tr><th>Orden</th><th>Camping</th><th>Operador</th><th>CLP/noche</th><th>Por qué ese orden</th></tr>
@@ -426,7 +453,7 @@
 <section class="wide" id="itinerario">
   <div class="eyebrow">Ajustable · toca la fecha o usa los botones</div>
   <h2 class="section-title">Calendario del viaje</h2>
-  <p class="section-intro">13 días en total: 2 de aclimatación/compras en Puerto Natales, 9 días de circuito (8 noches de camping), 2 de cierre. Cambia la fecha de llegada a Punta Arenas y el resto del calendario se recalcula solo.</p>
+  <p class="section-intro">13 días en total: 2 de aclimatación/compras en Puerto Natales, 9 días de circuito (8 noches de camping), 2 de cierre. Al cambiar la fecha de llegada a Punta Arenas, el resto del calendario se recalcula solo.</p>
 
   <div class="date-controls">
     <div>
@@ -457,9 +484,9 @@
         </div>
         <p class="day-desc">Vuelo de llegada a PUQ y bus directo a Puerto Natales. Primera noche en hostal.</p>
         <ul class="tips">
-          <li>Reserva el bus PA–Puerto Natales con antelación en temporada alta; salen llenos.</li>
-          <li>Guarda el equipaje de bodega bien identificado — es fácil confundir mochilas de trekking similares en la cinta.</li>
-          <li>Si el vuelo llega tarde, confirma con el hostal que acepten check-in nocturno.</li>
+          <li>Conviene reservar el bus Punta Arenas–Puerto Natales con antelación en temporada alta; suelen salir llenos.</li>
+          <li>Es recomendable etiquetar bien el equipaje de bodega — es fácil confundir mochilas de trekking similares en la cinta.</li>
+          <li>En caso de que el vuelo llegue tarde, vale la pena confirmar con el hostal que acepte check-in nocturno.</li>
         </ul>
       </div>
     </details>
@@ -478,10 +505,10 @@
         </div>
         <p class="day-desc">Día de logística antes de entrar al parque: gas, comida final y revisión de equipo.</p>
         <ul class="tips">
-          <li>Compra los cilindros de gas isobutano aquí — no se puede volar con ellos, y dentro del parque son mucho más caros si es que hay stock.</li>
-          <li>Revisa el pronóstico patagónico de los próximos 9 días (recién se vuelve confiable con pocos días de anticipación).</li>
-          <li>Confirma en el hostal si ofrecen custodia gratuita para lo que no lleves al trekking.</li>
-          <li class="warn">Verifica que tienes impresas o descargadas todas las reservas de camping y la entrada CONAF — piden mostrarlas en el check-in del parque.</li>
+          <li>Los cilindros de gas isobutano conviene comprarlos aquí — no se puede volar con ellos, y dentro del parque son mucho más caros si es que hay stock.</li>
+          <li>Es recomendable revisar el pronóstico patagónico de los próximos 9 días (recién se vuelve confiable con pocos días de anticipación).</li>
+          <li>Vale la pena consultar en el hostal si ofrecen custodia gratuita para lo que no se lleve al trekking.</li>
+          <li class="warn">Es importante tener impresas o descargadas todas las reservas de camping y la entrada CONAF — se piden en el check-in del parque.</li>
         </ul>
       </div>
     </details>
@@ -501,10 +528,10 @@
         </div>
         <p class="day-desc">Bus a la portería, check-in con entrada CONAF y reservas. Inicio del circuito por estepa patagónica abierta.</p>
         <ul class="tips">
-          <li>El bus desde Puerto Natales suele salir temprano (~7:00 am) — confirma el horario exacto la noche anterior.</li>
-          <li>Terreno llano y expuesto al viento: usa protector solar incluso con cielo nublado, el sol patagónico quema rápido.</li>
-          <li>Es común ver guanacos en este tramo — mantén distancia, son fauna silvestre protegida.</li>
-          <li>Llena las botellas de agua en los cursos de agua del camino; no hace falta cargar todo desde la entrada.</li>
+          <li>El bus desde Puerto Natales suele salir temprano (~7:00 am) — conviene confirmar el horario exacto la noche anterior.</li>
+          <li>Terreno llano y expuesto al viento: se recomienda usar protector solar incluso con cielo nublado, el sol patagónico quema rápido.</li>
+          <li>Es común ver guanacos en este tramo — conviene mantener distancia, son fauna silvestre protegida.</li>
+          <li>Las botellas de agua se pueden rellenar en los cursos de agua del camino; no hace falta cargar todo desde la entrada.</li>
         </ul>
       </div>
     </details>
@@ -524,10 +551,10 @@
         </div>
         <p class="day-desc">La etapa más larga de la primera mitad del circuito, siguiendo el río Paine hacia el norte con vistas al Lago Paine y al glaciar Dickson al final.</p>
         <ul class="tips">
-          <li class="warn">Sal apenas amanezca — es el día más largo antes del paso, y llegar de noche a Dickson complica instalar el campamento.</li>
-          <li>Hay un control obligatorio en la Guardería Coirón (~km 8,5): debes registrar el horario de paso y mostrar tus reservas de Dickson y Los Perros.</li>
-          <li>Aprovecha la parada en Coirón para almorzar — hay mesas y bancos.</li>
-          <li>El entorno de Dickson junto al lago es de los más lindos del circuito: si llegas con luz, camina hasta la orilla al atardecer.</li>
+          <li class="warn">Conviene salir apenas amanece — es el día más largo antes del paso, y llegar de noche a Dickson complica instalar el campamento.</li>
+          <li>Hay un control obligatorio en la Guardería Coirón (~km 8,5): es necesario registrar el horario de paso y mostrar las reservas de Dickson y Los Perros.</li>
+          <li>La parada en Coirón es un buen momento para almorzar — hay mesas y bancos.</li>
+          <li>El entorno de Dickson junto al lago es de los más lindos del circuito: si se llega con luz, vale la pena caminar hasta la orilla al atardecer.</li>
         </ul>
       </div>
     </details>
@@ -547,10 +574,10 @@
         </div>
         <p class="day-desc">Etapa corta y tranquila por bosque de lengas, con las primeras vistas del glaciar Los Perros al final del día.</p>
         <ul class="tips">
-          <li>Día para ir sin apuro: aprovecha de secar equipo o lavar ropa si sale el sol.</li>
-          <li class="warn">Duerme temprano esta noche: el ascenso al Paso John Gardner del día siguiente debe iniciarse antes de las 7:00 am, según indica CONAF.</li>
-          <li>Deja lista y organizada la mochila antes de dormir — la salida temprana no da mucho margen en la oscuridad.</li>
-          <li>Consulta con el guardaparques de Los Perros el estado del paso y el clima antes de acostarte; a veces cierran el cruce por viento extremo.</li>
+          <li>Día para ir sin apuro: buena oportunidad para secar equipo o lavar ropa si sale el sol.</li>
+          <li class="warn">Conviene dormir temprano esta noche: el ascenso al Paso John Gardner del día siguiente debe iniciarse antes de las 7:00 am, según indica CONAF.</li>
+          <li>Es recomendable dejar la mochila lista y organizada antes de dormir — la salida temprana no da mucho margen en la oscuridad.</li>
+          <li>Vale la pena consultar con el guardaparques de Los Perros el estado del paso y el clima antes de acostarse; a veces se cierra el cruce por viento extremo.</li>
         </ul>
       </div>
     </details>
@@ -570,11 +597,11 @@
         </div>
         <p class="day-desc">El día más exigente del circuito: ascenso a través de bosque y roca suelta hasta el Paso John Gardner (~1.200 msnm), con vista al Campo de Hielo Sur y al glaciar Grey, seguido de un descenso largo y empinado.</p>
         <ul class="tips">
-          <li class="warn">Sal antes de las 7:00 am — es un requisito de seguridad, no una sugerencia. CONAF puede restringir el acceso si sales más tarde.</li>
-          <li>Lleva ropa de abrigo extra en la mochila (no en el fondo): en la cima del paso el viento patagónico es extremo incluso en pleno verano.</li>
-          <li>Es un día largo sin reabastecimiento — lleva snacks energéticos a mano, no solo en el almuerzo.</li>
-          <li>El descenso hacia Grey es largo y castiga las rodillas: usa bastones si tienes, y baja con calma, sin apurarte por el cansancio.</li>
-          <li>Cruzarás puentes colgantes cerca del final — con viento fuerte pueden balancearse bastante, cruza de a uno.</li>
+          <li class="warn">La salida antes de las 7:00 am es un requisito de seguridad, no una sugerencia. CONAF puede restringir el acceso a quienes salen más tarde.</li>
+          <li>Conviene llevar ropa de abrigo extra a mano en la mochila (no en el fondo): en la cima del paso el viento patagónico es extremo incluso en pleno verano.</li>
+          <li>Es un día largo sin reabastecimiento — conviene llevar snacks energéticos a mano, no solo para el almuerzo.</li>
+          <li>El descenso hacia Grey es largo y castiga las rodillas: se recomienda usar bastones si se tienen, y bajar con calma, sin apurarse por el cansancio.</li>
+          <li>Cerca del final hay puentes colgantes — con viento fuerte pueden balancearse bastante, conviene cruzarlos de a uno.</li>
         </ul>
       </div>
     </details>
@@ -595,8 +622,8 @@
         <p class="day-desc">Tramo con buenas vistas al glaciar Grey y al Lago Pehoé, terreno más suave después del esfuerzo del día anterior.</p>
         <ul class="tips">
           <li>Buen día para fotos: hay miradores del glaciar poco después de salir de Grey.</li>
-          <li>Paine Grande tiene un mini-mercado con algo de stock — útil para un capricho, pero los precios triplican los de la ciudad.</li>
-          <li>El sector de Paine Grande y el Lago Pehoé es especialmente ventoso: asegura bien la carpa al instalarla.</li>
+          <li>Paine Grande tiene un mini-mercado con algo de stock — útil para algún capricho, aunque los precios triplican los de la ciudad.</li>
+          <li>El sector de Paine Grande y el Lago Pehoé es especialmente ventoso: conviene asegurar bien la carpa al instalarla.</li>
         </ul>
       </div>
     </details>
@@ -616,9 +643,9 @@
         </div>
         <p class="day-desc">Entrada al Valle Francés, con opción de dejar la mochila grande en el campamento Italiano y subir sin peso hasta el Mirador Británico.</p>
         <ul class="tips">
-          <li>Si tienen energía, la extensión al Mirador Británico suma ~7-8 h ida y vuelta desde Italiano — evalúen el cansancio acumulado antes de decidir.</li>
-          <li>Dejen la mochila grande asegurada en Italiano si suben al mirador; solo lleven lo esencial (agua, snacks, capa impermeable).</li>
-          <li>El Valle Francés concentra glaciares colgantes: es común escuchar y ver desprendimientos de hielo — un espectáculo, pero mantengan distancia de las zonas de avalancha señalizadas.</li>
+          <li>En caso de contar con energía suficiente, la extensión al Mirador Británico suma ~7-8 h ida y vuelta desde Italiano — conviene evaluar el cansancio acumulado antes de decidir.</li>
+          <li>Se recomienda dejar la mochila grande asegurada en Italiano en caso de subir al mirador, y llevar solo lo esencial (agua, snacks, capa impermeable).</li>
+          <li>El Valle Francés concentra glaciares colgantes: es común escuchar y ver desprendimientos de hielo — un espectáculo, aunque conviene mantener distancia de las zonas de avalancha señalizadas.</li>
         </ul>
       </div>
     </details>
@@ -639,8 +666,8 @@
         <p class="day-desc">Etapa corta bordeando el Lago Nordenskjöld, con vistas cercanas a los Cuernos del Paine.</p>
         <ul class="tips">
           <li>Día ideal para llegar temprano y descansar las piernas antes del tramo final.</li>
-          <li>Aprovechen la tarde libre para lavar y secar ropa si hay sol — Cuernos suele tener buen espacio para tender.</li>
-          <li>Es un buen momento para revisar cuánta comida les queda y racionar los últimos dos días si hace falta.</li>
+          <li>La tarde libre es una buena oportunidad para lavar y secar ropa si hay sol — Cuernos suele tener buen espacio para tender.</li>
+          <li>Es un buen momento para revisar cuánta comida queda y racionar los últimos dos días si hace falta.</li>
         </ul>
       </div>
     </details>
@@ -660,9 +687,9 @@
         </div>
         <p class="day-desc">Último tramo antes del cierre del circuito, dejándolos posicionados para el amanecer en las Torres al día siguiente.</p>
         <ul class="tips">
-          <li>Definan esta noche si van a madrugar por el mirador Base Torres — condiciona la hora de dormir y cuánto empacan la noche anterior.</li>
-          <li>Revisen el pronóstico para el amanecer: con niebla o lluvia la vista de las Torres no vale la pena el madrugón.</li>
-          <li>Carguen la frontal y cualquier power bank esta noche, no en el último momento.</li>
+          <li>Conviene definir esta noche si se va a madrugar por el mirador Base Torres — condiciona la hora de dormir y cuánto se empaca la noche anterior.</li>
+          <li>Vale la pena revisar el pronóstico para el amanecer: con niebla o lluvia, la vista de las Torres no compensa el madrugón.</li>
+          <li>Es recomendable cargar la frontal y cualquier power bank esta noche, no en el último momento.</li>
         </ul>
       </div>
     </details>
@@ -681,10 +708,10 @@
         </div>
         <p class="day-desc">Cierre del circuito. Opción de subir al amanecer al mirador Base Torres antes de bajar a Central para tomar el bus de regreso.</p>
         <ul class="tips">
-          <li class="warn">Si suben al mirador, salen de madrugada (usualmente 4:30-5:00 am) — hace mucho frío antes del amanecer, lleven toda la ropa de abrigo que tengan.</li>
-          <li>El sendero al mirador tiene un tramo final de bloques de piedra, exigente con poca luz — usen la frontal hasta que aclare.</li>
-          <li>Calculen el horario del bus de salida desde Central antes de decidir cuánto tiempo se quedan arriba disfrutando la vista.</li>
-          <li>Bajen con calma: es el último tramo, pero las rodillas ya vienen cansadas de 8 días de trekking.</li>
+          <li class="warn">En caso de subir al mirador, la salida suele ser de madrugada (usualmente 4:30-5:00 am) — hace mucho frío antes del amanecer, conviene llevar toda la ropa de abrigo disponible.</li>
+          <li>El sendero al mirador tiene un tramo final de bloques de piedra, exigente con poca luz — conviene usar la frontal hasta que aclare.</li>
+          <li>Es recomendable calcular el horario del bus de salida desde Central antes de decidir cuánto tiempo quedarse arriba disfrutando la vista.</li>
+          <li>El descenso conviene hacerlo con calma: es el último tramo, pero las rodillas ya vienen cansadas de 8 días de trekking.</li>
         </ul>
       </div>
     </details>
@@ -701,7 +728,7 @@
         <p class="day-desc">Día de descanso post-circuito. Ducha caliente larga, comida real y piernas en alto.</p>
         <ul class="tips">
           <li>Buen día para sumar la Cueva del Milodón (medio día) sin que afecte el circuito.</li>
-          <li>Laven y organicen el equipo húmedo antes de guardarlo en la mochila para el vuelo.</li>
+          <li>Conviene lavar y organizar el equipo húmedo antes de guardarlo en la mochila para el vuelo.</li>
         </ul>
       </div>
     </details>
@@ -717,8 +744,8 @@
         <div class="day-stats"><span class="stat">Bus ~3 h</span></div>
         <p class="day-desc">Bus de regreso a Punta Arenas con margen suficiente antes del vuelo.</p>
         <ul class="tips">
-          <li>Confirmen el horario del bus la noche anterior — en temporada alta puede haber más de una salida.</li>
-          <li>Dejen colchón de tiempo extra: el tráfico o algún imprevisto de última hora es más común de lo que parece.</li>
+          <li>Conviene confirmar el horario del bus la noche anterior — en temporada alta puede haber más de una salida.</li>
+          <li>Es recomendable dejar colchón de tiempo extra: el tráfico o algún imprevisto de última hora es más común de lo que parece.</li>
         </ul>
       </div>
     </details>
@@ -805,15 +832,77 @@
   </div>
 </section>
 
+<section id="checklist">
+  <div class="eyebrow">Lo que no puede faltar</div>
+  <h2 class="section-title">Tips importantes y checklist</h2>
+  <p class="section-intro">Resumen de lo crítico repartido a lo largo del calendario, más una lista de equipo para revisar antes de cerrar la mochila.</p>
+
+  <div class="critical-box">
+    <h3>Lo más fácil de olvidar</h3>
+    <ul>
+      <li>Cédula de identidad — se pide para acceder a la tarifa de residente chileno tanto en las reservas de camping como en la entrada CONAF.</li>
+      <li>Comprobantes de las 8 reservas de camping y de la entrada CONAF, impresos o descargados sin necesidad de señal (dentro del parque no hay cobertura confiable).</li>
+      <li>Efectivo en pesos chilenos: fuera de Puerto Natales y Punta Arenas no hay cajeros automáticos.</li>
+      <li>Cilindros de gas — no pueden viajar en el avión, se compran recién en Puerto Natales.</li>
+      <li>Bolsas de basura extra: todo lo que entra al parque debe salir con la persona que lo llevó, incluyendo restos de comida.</li>
+    </ul>
+  </div>
+
+  <div class="checklist-groups">
+    <div class="checklist-group">
+      <h3>Refugio y abrigo</h3>
+      <ul class="checklist">
+        <li>Carpa de 3-4 estaciones, resistente al viento patagónico</li>
+        <li>Saco de dormir para temperaturas bajo 0 °C</li>
+        <li>Aislante o colchoneta</li>
+        <li>Mochila de 50-70 litros</li>
+        <li>Calzado de trekking impermeable de caña alta</li>
+        <li>Ropa técnica por capas (primera capa, polar, cortavientos)</li>
+        <li>Chaqueta y pantalón impermeables</li>
+        <li>Gorro, guantes y buff — las noches son frías incluso en febrero</li>
+      </ul>
+
+      <h3>Cocina y alimentación</h3>
+      <ul class="checklist">
+        <li>Cocinilla a gas y cilindros isobutano suficientes para 9-10 días</li>
+        <li>Set de cocina y utensilios básicos</li>
+        <li>Comida para todos los días del circuito más un margen de un día extra</li>
+        <li>Botella o sistema de hidratación de al menos 2 litros</li>
+      </ul>
+    </div>
+
+    <div class="checklist-group">
+      <h3>Seguridad y navegación</h3>
+      <ul class="checklist">
+        <li>Linterna frontal con pilas de repuesto</li>
+        <li>Botiquín de primeros auxilios básico</li>
+        <li>Protector solar y lentes de sol</li>
+        <li>Mapa del circuito o track GPS descargado sin conexión</li>
+        <li>Bastones de trekking, especialmente útiles en el Paso John Gardner y en los descensos</li>
+      </ul>
+
+      <h3>Documentos y logística</h3>
+      <ul class="checklist">
+        <li>Cédula de identidad</li>
+        <li>Reservas de los 8 campings impresas o descargadas</li>
+        <li>Entrada CONAF con código QR descargado</li>
+        <li>Efectivo en pesos chilenos para imprevistos</li>
+        <li>Power bank para cargar linterna frontal y teléfono</li>
+        <li>Bolsas de basura adicionales (principio "no dejar rastro")</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <section class="notes" id="notas">
   <div class="eyebrow" style="color:#D89A72;">Antes de pagar</div>
   <h2 class="section-title">Notas finales</h2>
   <ul>
-    <li><strong>Reserven el circuito antes que los vuelos.</strong> Es más fácil cambiar una fecha de avión que conseguir un camping agotado en temporada alta.</li>
+    <li><strong>Conviene reservar el circuito antes que los vuelos.</strong> Es más fácil cambiar una fecha de avión que conseguir un camping agotado en temporada alta.</li>
     <li>El circuito O solo se recorre en <strong>sentido antihorario</strong> y todas las noches deben estar reservadas antes de entrar al parque — no hay opción de improvisar sobre la marcha.</li>
-    <li><strong>Marquen la opción "residente chileno" al reservar</strong> en vertice.travel y lastorres.com — el sistema pide RUT o cédula de identidad para aplicar la tarifa nacional, que es bastante más baja que la de extranjero.</li>
-    <li>Confirmen el valor exacto de la entrada CONAF nacional directamente en <strong>pasesparques.cl</strong> cerca de la fecha de compra: el sistema cambió en mayo de 2026 y la tarifa específica del Circuito Macizo Paine no está del todo consolidada en fuentes públicas.</li>
-    <li>El calendario es una propuesta de referencia — ajústenlo con el selector de fecha una vez que sepan qué disponibilidad real encuentran en cada camping.</li>
+    <li><strong>Es importante marcar la opción "residente chileno" al reservar</strong> en vertice.travel y lastorres.com — el sistema pide RUT o cédula de identidad para aplicar la tarifa nacional, que es bastante más baja que la de extranjero.</li>
+    <li>Conviene confirmar el valor exacto de la entrada CONAF nacional directamente en <strong>pasesparques.cl</strong> cerca de la fecha de compra: el sistema cambió en mayo de 2026 y la tarifa específica del Circuito Macizo Paine no está del todo consolidada en fuentes públicas.</li>
+    <li>El calendario es una propuesta de referencia — se puede ajustar con el selector de fecha una vez que se sepa qué disponibilidad real hay en cada camping.</li>
   </ul>
 </section>
 
