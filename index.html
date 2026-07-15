@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Circuito O — Torres del Paine · Febrero 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #EAE6DC;
+    --paper-2: #E1DCCE;
+    --ink: #1E2A24;
+    --slate: #4B5860;
+    --rust: #AE4E1E;
+    --rust-soft: #E7C8B4;
+    --glacier: #2C6B7C;
+    --glacier-soft: #C9DFE2;
+    --moss: #56622F;
+    --line: #C3BCA9;
+    --white: #F7F5EF;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Source Serif 4', serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .display{font-family:'Big Shoulders Display', sans-serif; text-transform:uppercase; letter-spacing:0.01em;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--rust); font-weight:600;
+  }
+  a{color:var(--glacier);}
+
+  /* ---------- STICKY NAV / INDEX ---------- */
+  .indexbar{
+    position:sticky; top:0; z-index:50;
+    background:var(--ink);
+    border-bottom:1px solid #33443B;
+  }
+  .indexbar-inner{
+    max-width:1120px; margin:0 auto;
+    display:flex; align-items:center; gap:22px;
+    padding:0 24px; overflow-x:auto;
+    scrollbar-width:none;
+  }
+  .indexbar-inner::-webkit-scrollbar{display:none;}
+  .indexbar a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px; text-transform:uppercase; letter-spacing:0.08em;
+    color:#B9C4B2; text-decoration:none;
+    padding:14px 0; white-space:nowrap;
+    border-bottom:2px solid transparent;
+  }
+  .indexbar a:hover{color:var(--white); border-bottom-color:var(--rust);}
+  .indexbar-title{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-weight:700; font-size:15px; letter-spacing:0.02em;
+    color:var(--white); white-space:nowrap; padding:14px 0;
+    border-right:1px solid #33443B; padding-right:20px; margin-right:2px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{padding:56px 24px 0; max-width:980px; margin:0 auto;}
+  .hero-kicker{
+    display:flex; justify-content:space-between; align-items:baseline;
+    border-bottom:1px solid var(--line); padding-bottom:14px; margin-bottom:28px;
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--slate);
+  }
+  .hero h1{
+    font-size:clamp(48px, 9vw, 104px); line-height:0.92; font-weight:800;
+    margin:0 0 6px; color:var(--ink);
+  }
+  .hero h1 span{color:var(--rust);}
+  .hero-sub{
+    font-family:'Source Serif 4', serif; font-style:italic; font-size:20px;
+    color:var(--slate); max-width:560px; margin:14px 0 40px;
+  }
+
+  /* ---------- ROUTE PROFILE ---------- */
+  .route-wrap{max-width:1220px; margin:0 auto; padding:0 24px 40px;}
+  .route-label{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--slate); margin-bottom:10px;
+  }
+  .route-svg{width:100%; height:auto; display:block;}
+  .route-caption{
+    display:flex; justify-content:space-between;
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--slate);
+    margin-top:8px; letter-spacing:0.04em; flex-wrap:wrap; gap:6px;
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{max-width:880px; margin:0 auto; padding:56px 24px; border-top:1px solid var(--line); scroll-margin-top:60px;}
+  section.first{border-top:none; padding-top:8px;}
+  section.wide{max-width:1000px;}
+  h2.section-title{
+    font-family:'Big Shoulders Display', sans-serif; text-transform:uppercase;
+    font-size:38px; font-weight:700; margin:6px 0 6px; color:var(--ink);
+  }
+  .section-intro{color:var(--slate); max-width:640px; margin-bottom:32px;}
+
+  /* ---------- TABLE ---------- */
+  table{width:100%; border-collapse:collapse; font-family:'IBM Plex Mono', monospace; font-size:14px;}
+  thead th{
+    text-align:left; font-size:11px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--slate); border-bottom:1px solid var(--ink); padding:0 10px 10px 0; font-weight:600;
+  }
+  tbody td{padding:12px 10px 12px 0; border-bottom:1px solid var(--line); vertical-align:top;}
+  tbody tr:hover{background:var(--paper-2);}
+  td.item{font-family:'Source Serif 4', serif; font-size:16px;}
+  td.num{white-space:nowrap; color:var(--ink);}
+  td.note{color:var(--slate); font-size:12.5px; line-height:1.5;}
+  tfoot td{padding:16px 10px 0 0; font-weight:600; font-size:15px; border-top:2px solid var(--ink); border-bottom:none;}
+  .total-row td{color:var(--rust);}
+  .rate-note{margin-top:14px; font-size:13px; color:var(--slate); font-style:italic;}
+
+  /* ---------- ITINERARY CONTROLS ---------- */
+  .date-controls{
+    display:flex; align-items:center; gap:16px; flex-wrap:wrap;
+    background:var(--white); padding:20px 22px; margin-bottom:28px;
+  }
+  .date-controls label{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase;
+    letter-spacing:0.08em; color:var(--slate); display:block; margin-bottom:6px;
+  }
+  .date-controls input[type="date"]{
+    font-family:'IBM Plex Mono', monospace; font-size:15px; padding:8px 10px;
+    border:1px solid var(--ink); background:var(--paper); color:var(--ink);
+  }
+  .nudge-btns{display:flex; gap:6px; align-items:flex-end;}
+  .nudge-btns button{
+    font-family:'IBM Plex Mono', monospace; font-size:13px; padding:8px 12px;
+    background:var(--ink); color:var(--white); border:none; cursor:pointer;
+  }
+  .nudge-btns button:hover{background:var(--rust);}
+  .date-controls .range-span{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--glacier);
+    background:var(--glacier-soft); padding:8px 12px; margin-left:auto;
+  }
+
+  /* ---------- ITINERARY ACCORDION ---------- */
+  .day-list{display:flex; flex-direction:column; gap:2px;}
+  .day{
+    background:var(--white);
+    border-left:3px solid var(--line);
+  }
+  .day.trek{border-left-color:var(--glacier);}
+  .day.hard{border-left-color:var(--rust);}
+  .day summary{
+    list-style:none; cursor:pointer;
+    display:grid; grid-template-columns:150px 40px 1fr 90px; align-items:center; gap:14px;
+    padding:16px 20px;
+  }
+  .day summary::-webkit-details-marker{display:none;}
+  .day-date{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--rust); font-weight:600;
+    text-transform:capitalize;
+  }
+  .day-tag{
+    font-family:'Big Shoulders Display', sans-serif; font-size:20px; font-weight:700;
+    color:var(--slate);
+  }
+  .day-title{
+    font-family:'Big Shoulders Display', sans-serif; font-size:21px; font-weight:700;
+    text-transform:uppercase; color:var(--ink);
+  }
+  .day-chevron{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--slate); text-align:right;
+  }
+  .day[open] .day-chevron::after{content:"cerrar ▲";}
+  .day:not([open]) .day-chevron::after{content:"detalles ▼";}
+  .day-body{padding:0 20px 22px 20px; border-top:1px solid var(--line);}
+  .day-stats{
+    display:flex; flex-wrap:wrap; gap:10px; margin:16px 0;
+  }
+  .stat{
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--ink);
+    background:var(--paper-2); padding:5px 10px;
+  }
+  .day-desc{color:var(--ink); max-width:680px; margin-bottom:14px;}
+  .tips{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:9px;}
+  .tips li{
+    padding-left:22px; position:relative; color:var(--slate); font-size:15px;
+  }
+  .tips li::before{
+    content:"💡"; position:absolute; left:0; top:0; font-size:13px;
+  }
+  .tips li.warn::before{content:"⚠️";}
+  .tips li.warn{color:var(--ink);}
+
+  /* ---------- GASTOS MENSUALES (bars) ---------- */
+  .bars{display:flex; align-items:flex-end; gap:14px; height:180px; margin:36px 0 8px; border-bottom:1px solid var(--ink); padding-bottom:0;}
+  .bar-col{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%;}
+  .bar{width:100%; background:var(--glacier); position:relative;}
+  .bar.peak{background:var(--rust);}
+  .bar-amt{font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:var(--ink); margin-bottom:6px; white-space:nowrap;}
+  .bar-labels{display:flex; gap:14px; margin-top:8px;}
+  .bar-label-col{flex:1; text-align:center; font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--slate); text-transform:uppercase;}
+  .savings-total{
+    margin-top:24px; padding:18px 20px; background:var(--white);
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;
+  }
+  .savings-total .big{font-family:'Big Shoulders Display', sans-serif; font-size:34px; font-weight:700; color:var(--rust);}
+  .savings-total .label{font-family:'IBM Plex Mono', monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:var(--slate);}
+  .month-table{margin-top:26px;}
+  .month-table td.item{font-size:15px;}
+
+  /* ---------- OPTIONS CARDS ---------- */
+  .opt-groups{display:grid; grid-template-columns:1fr 1fr; gap:36px;}
+  .opt-group h3{
+    font-family:'Big Shoulders Display', sans-serif; font-size:22px; text-transform:uppercase;
+    margin:0 0 14px; color:var(--moss); border-bottom:1px solid var(--line); padding-bottom:8px;
+  }
+  .opt{margin-bottom:18px;}
+  .opt-name{font-weight:600; color:var(--ink); font-size:15.5px;}
+  .opt-desc{color:var(--slate); font-size:14.5px; margin-top:2px;}
+
+  /* ---------- FOOTER NOTES ---------- */
+  .notes{background:var(--ink); color:var(--paper);}
+  .notes h2.section-title{color:var(--paper);}
+  .notes ul{padding-left:20px; margin:0;}
+  .notes li{margin-bottom:14px; color:#CFCABB;}
+  .notes strong{color:var(--white);}
+  .footer{
+    max-width:880px; margin:0 auto; padding:32px 24px 60px;
+    font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--slate);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+  }
+
+  @media (max-width:640px){
+    .opt-groups{grid-template-columns:1fr;}
+    .hero-kicker{flex-direction:column; align-items:flex-start; gap:6px;}
+    table, thead, tbody, tfoot, tr{display:block; width:100%;}
+    thead{display:none;}
+    tbody tr{border-bottom:1px solid var(--line); padding:10px 0;}
+    tbody td{border-bottom:none; padding:3px 0;}
+    td.item{font-weight:600;}
+    td.num::before{content:attr(data-label) ": "; color:var(--slate); font-size:11px;}
+    tfoot tr{padding-top:10px;}
+    .day summary{grid-template-columns:1fr; gap:4px;}
+    .day-chevron{text-align:left;}
+    .date-controls .range-span{margin-left:0;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="indexbar">
+  <div class="indexbar-inner">
+    <span class="indexbar-title">Circuito O · 2027</span>
+    <a href="#reservas">Reservas</a>
+    <a href="#presupuesto">Presupuesto</a>
+    <a href="#campings">Campings</a>
+    <a href="#itinerario">Itinerario</a>
+    <a href="#gastos-mensuales">Gastos mensuales</a>
+    <a href="#opciones">Opciones</a>
+    <a href="#notas">Notas</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-kicker">
+    <span>Dossier de expedición</span>
+    <span>120–130 KM · 8–9 días</span>
+  </div>
+  <h1>Circuito <span>O</span><br>Torres del Paine</h1>
+  <p class="hero-sub">Plan de acción y presupuesto para febrero de 2027 — modo mochilero, carpa propia, cocina autónoma, tarifas de residente chileno. Investigación verificada en julio de 2026.</p>
+</div>
+
+<div class="route-wrap">
+  <div class="route-label">Perfil de ruta — sentido antihorario (obligatorio)</div>
+  <svg class="route-svg" viewBox="0 0 1220 210" xmlns="http://www.w3.org/2000/svg">
+    <polyline points="20,150 120,100 240,80 350,130 460,40 570,150 680,60 790,110 900,70 1010,140 1110,100 1190,150"
+      fill="none" stroke="#4B5860" stroke-width="1.5" opacity="0.45"/>
+    <g font-family="IBM Plex Mono" font-size="11" fill="#4B5860">
+      <circle cx="20" cy="150" r="5" fill="#AE4E1E"/>
+      <text x="20" y="178" text-anchor="middle" font-size="10">Amarga</text>
+
+      <circle cx="240" cy="80" r="5" fill="#2C6B7C"/>
+      <text x="240" y="178" text-anchor="middle">D1</text>
+      <text x="240" y="192" text-anchor="middle" font-size="10">Serón</text>
+
+      <circle cx="460" cy="40" r="5" fill="#2C6B7C"/>
+      <text x="460" y="178" text-anchor="middle">D2</text>
+      <text x="460" y="192" text-anchor="middle" font-size="10">Dickson</text>
+
+      <circle cx="570" cy="150" r="5" fill="#2C6B7C"/>
+      <text x="570" y="178" text-anchor="middle">D3</text>
+      <text x="570" y="192" text-anchor="middle" font-size="10">Los Perros</text>
+
+      <circle cx="680" cy="60" r="6" fill="#AE4E1E"/>
+      <text x="680" y="40" text-anchor="middle" font-size="10">Paso J. Gardner</text>
+
+      <circle cx="790" cy="110" r="5" fill="#2C6B7C"/>
+      <text x="790" y="178" text-anchor="middle">D4</text>
+      <text x="790" y="192" text-anchor="middle" font-size="10">Grey</text>
+
+      <circle cx="900" cy="70" r="5" fill="#2C6B7C"/>
+      <text x="900" y="178" text-anchor="middle">D5</text>
+      <text x="900" y="192" text-anchor="middle" font-size="10">Paine Grande</text>
+
+      <circle cx="1010" cy="140" r="5" fill="#2C6B7C"/>
+      <text x="1010" y="178" text-anchor="middle">D6</text>
+      <text x="1010" y="192" text-anchor="middle" font-size="10">Francés</text>
+
+      <circle cx="1110" cy="100" r="5" fill="#2C6B7C"/>
+      <text x="1110" y="178" text-anchor="middle">D7</text>
+      <text x="1110" y="192" text-anchor="middle" font-size="10">Cuernos</text>
+
+      <circle cx="1190" cy="150" r="5" fill="#2C6B7C"/>
+      <text x="1178" y="178" text-anchor="middle">D8</text>
+      <text x="1178" y="192" text-anchor="middle" font-size="10">Chileno</text>
+    </g>
+  </svg>
+  <div class="route-caption">
+    <span>Vértice Patagonia — Dickson · Los Perros · Grey · Paine Grande</span>
+    <span>Las Torres Patagonia — Serón · Cuernos · Francés · Central · Chileno</span>
+  </div>
+</div>
+
+<section class="first" id="reservas">
+  <div class="eyebrow">Empiecen por acá</div>
+  <h2 class="section-title">Reservas ya abiertas</h2>
+  <p class="section-intro">La temporada 2026–2027 (la que les toca) abrió reservas entre abril y junio de 2026 en Vértice Patagonia y Las Torres Patagonia. Es decir, <strong>hoy ya se puede y se debería estar reservando</strong> — los sitios que comparten el circuito W y O (Chileno, Central, Cuernos, Francés, Grey, Paine Grande) se agotan primero para fechas de enero-febrero. Todos los precios de esta página son <strong>tarifa nacional / residente chileno</strong>, distinta y más baja que la tarifa en dólares para extranjeros.</p>
+</section>
+
+<section id="presupuesto">
+  <div class="eyebrow">Por persona · modo mochilero · tarifa nacional</div>
+  <h2 class="section-title">Presupuesto detallado</h2>
+  <p class="section-intro">Todos los valores en pesos chilenos. No incluye equipo de trekking que no tengan ni actividades opcionales.</p>
+  <table>
+    <thead>
+      <tr><th>Ítem</th><th>CLP</th><th>Notas</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="item">Vuelo SCL–PUQ ida y vuelta</td>
+        <td class="num" data-label="CLP">$185.000–240.000</td>
+        <td class="note">Vuelo doméstico. Reservar 5-6 meses antes ahorra ~30%</td>
+      </tr>
+      <tr>
+        <td class="item">Bus Punta Arenas ↔ Pto. Natales</td>
+        <td class="num" data-label="CLP">$20.000–24.000</td>
+        <td class="note">Ida y vuelta, Buses Fernández / Bus Sur</td>
+      </tr>
+      <tr>
+        <td class="item">Bus Pto. Natales ↔ Parque</td>
+        <td class="num" data-label="CLP">~$20.000</td>
+        <td class="note">Ida y vuelta, incluye portería</td>
+      </tr>
+      <tr>
+        <td class="item">Entrada CONAF (chileno/residente)</td>
+        <td class="num" data-label="CLP">$15.000–25.000</td>
+        <td class="note">Tarifa nacional, muy inferior a la de extranjero (~$48.500+). Sistema cambió el 1 mayo 2026: confirmar valor exacto del "Circuito Macizo Paine" en pasesparques.cl</td>
+      </tr>
+      <tr>
+        <td class="item">Camping circuito (8 noches, tarifa chilena)</td>
+        <td class="num" data-label="CLP">$128.000–132.000</td>
+        <td class="note">4 noches Vértice (~$9.500 c/u) + 4 noches Las Torres ($23.000 c/u), carpa propia — ver desglose por sitio abajo</td>
+      </tr>
+      <tr>
+        <td class="item">Hostal Pto. Natales (3 noches)</td>
+        <td class="num" data-label="CLP">$36.000–54.000</td>
+        <td class="note">San Agustín / Carfran / Don Guillermo</td>
+      </tr>
+      <tr>
+        <td class="item">Comida (9–10 días)</td>
+        <td class="num" data-label="CLP">$75.000–110.000</td>
+        <td class="note">Deshidratados, pastas, avena, frutos secos</td>
+      </tr>
+      <tr>
+        <td class="item">Gas (2–3 cilindros isobutano)</td>
+        <td class="num" data-label="CLP">$15.000–21.000</td>
+        <td class="note">Comprar al llegar a Pto. Natales, no vuela en avión</td>
+      </tr>
+      <tr>
+        <td class="item">Contingencia / extras</td>
+        <td class="num" data-label="CLP">$50.000–75.000</td>
+        <td class="note">Mini-mercados dentro del parque triplican precios</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr class="total-row">
+        <td class="item">Total estimado por persona</td>
+        <td class="num" data-label="CLP">~$544.000–701.000</td>
+        <td></td>
+      </tr>
+    </tfoot>
+  </table>
+  <p class="rate-note">Rango realista sin actividades adicionales (Milodón, Sierra Baguales, Isla Magdalena, Perito Moreno). El camping sale un poco más caro de lo esperado porque Las Torres subió su tarifa de "sitio camping" para chilenos a $23.000/noche en la temporada 26-27 — pero la entrada CONAF nacional compensa esa diferencia con creces frente a la tarifa de extranjero.</p>
+</section>
+
+<section id="campings">
+  <div class="eyebrow">En qué orden reservar · precio por sitio</div>
+  <h2 class="section-title">Los 8 campings, uno por uno</h2>
+  <p class="section-intro">Reserven primero los sitios que comparten el circuito W y el O — se agotan antes. Los tres campings exclusivos del circuito O (Serón, Dickson, Los Perros) suelen tener algo más de holgura, pero igual conviene asegurarlos pronto porque Los Perros tiene capacidad reducida.</p>
+  <table>
+    <thead>
+      <tr><th>Orden</th><th>Camping</th><th>Operador</th><th>CLP/noche</th><th>Por qué ese orden</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="num" data-label="Orden">1</td><td class="item">Chileno</td><td class="note">Las Torres</td><td class="num" data-label="CLP">$23.000 pp</td><td class="note">Comparte demanda con el circuito W, es el más solicitado del parque</td></tr>
+      <tr><td class="num" data-label="Orden">2</td><td class="item">Central</td><td class="note">Las Torres</td><td class="num" data-label="CLP">$23.000 pp</td><td class="note">Punto de entrada/salida, también usado por el W</td></tr>
+      <tr><td class="num" data-label="Orden">3</td><td class="item">Cuernos</td><td class="note">Las Torres</td><td class="num" data-label="CLP">$23.000 pp</td><td class="note">Alta demanda por su vista, compartido con el W</td></tr>
+      <tr><td class="num" data-label="Orden">4</td><td class="item">Francés</td><td class="note">Las Torres</td><td class="num" data-label="CLP">$23.000 pp</td><td class="note">Acceso al Valle Francés, también usado por el W</td></tr>
+      <tr><td class="num" data-label="Orden">5</td><td class="item">Grey</td><td class="note">Vértice</td><td class="num" data-label="CLP">~$9.500 pp</td><td class="note">Mirador del glaciar, muy pedido por trekkers del W</td></tr>
+      <tr><td class="num" data-label="Orden">6</td><td class="item">Paine Grande</td><td class="note">Vértice</td><td class="num" data-label="CLP">~$9.500 pp</td><td class="note">Nodo central del parque, también en ruta del W</td></tr>
+      <tr><td class="num" data-label="Orden">7</td><td class="item">Serón</td><td class="note">Las Torres</td><td class="num" data-label="CLP">$23.000 pp</td><td class="note">Exclusivo del O, algo menos demandado</td></tr>
+      <tr><td class="num" data-label="Orden">8</td><td class="item">Dickson</td><td class="note">Vértice</td><td class="num" data-label="CLP">~$9.500 pp</td><td class="note">Exclusivo del O</td></tr>
+      <tr><td class="num" data-label="Orden">9</td><td class="item">Los Perros</td><td class="note">Vértice</td><td class="num" data-label="CLP">~$9.500 pp</td><td class="note">Exclusivo del O, capacidad más reducida — no dejarlo para el final</td></tr>
+    </tbody>
+  </table>
+  <p class="rate-note">Vértice suele exigir reservar Dickson, Los Perros y Grey juntos (no se puede reservar solo uno de los tres). Tarifas para chilenos parten "desde $9.000" según su propia comunicación oficial; confirmar cada valor exacto al reservar en vertice.travel y lastorres.com, marcando la opción de residente/chileno para acceder al precio en CLP.</p>
+</section>
+
+<section class="wide" id="itinerario">
+  <div class="eyebrow">Ajustable · toca la fecha o usa los botones</div>
+  <h2 class="section-title">Calendario del viaje</h2>
+  <p class="section-intro">13 días en total: 2 de aclimatación/compras en Puerto Natales, 9 días de circuito (8 noches de camping), 2 de cierre. Cambia la fecha de llegada a Punta Arenas y el resto del calendario se recalcula solo.</p>
+
+  <div class="date-controls">
+    <div>
+      <label for="startDate">Fecha de llegada a Punta Arenas (Día 0)</label>
+      <input type="date" id="startDate" value="2027-02-19">
+    </div>
+    <div class="nudge-btns">
+      <button type="button" onclick="nudgeDate(-1)">− 1 día</button>
+      <button type="button" onclick="nudgeDate(1)">+ 1 día</button>
+      <button type="button" onclick="resetDate()">Reset 19 feb</button>
+    </div>
+    <div class="range-span" id="rangeSpan"></div>
+  </div>
+
+  <div class="day-list" id="dayList">
+
+    <details class="day" data-offset="0" open>
+      <summary>
+        <span class="day-date" data-date></span>
+        <span class="day-tag">D0</span>
+        <span class="day-title">Punta Arenas → Puerto Natales</span>
+        <span class="day-chevron"></span>
+      </summary>
+      <div class="day-body">
+        <div class="day-stats">
+          <span class="stat">Bus ~3 h</span>
+          <span class="stat">Sin caminata</span>
+        </div>
+        <p class="day-desc">Vuelo de llegada a PUQ y bus directo a Puerto Natales. Primera noche en hostal.</p>
+        <ul class="tips">
+          <li>Reserva el bus PA–Puerto Natales con antelación en temporada alta; salen llenos.</li>
+          <li>Guarda el equipaje de bodega bien identificado — es fácil confundir mochilas de trekking similares en la cinta.</li>
+          <li>Si el vuelo llega tarde, confirma con el hostal que acepten check-in nocturno.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="day" data-offset="1">
+      <summary>
+        <span class="day-date" data-date></span>
+        <span class="day-tag">D0+1</span>
+        <span class="day-title">Puerto Natales — preparación</span>
+        <span class="day-chevron"></span>
+      </summary>
+      <div class="day-body">
+        <div class="day-stats">
+          <span class="stat">Día de compras</span>
+          <span class="stat">Sin caminata</span>
+        </div>
+        <p class="day-desc">Día de logística antes de entrar al parque: gas, comida final y revisión de equipo.</p>
+        <ul class="tips">
+          <li>Compra los cilindros de gas isobutano aquí — no se puede volar con ellos, y dentro del parque son mucho más caros si es que hay stock.</li>
+          <li>Revisa el pronóstico patagónico de los próximos 9 días (recién se vuelve confiable con pocos días de anticipación).</li>
+          <li>Confirma en el hostal si ofrecen custodia gratuita para lo que no lleves al trekking.</li>
+          <li class="warn">Verifica que tienes impresas o descargadas todas las reservas de camping y la entrada CONAF — piden mostrarlas en el check-in del parque.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="day trek" data-offset="2">
+      <summary>
+        <span class="day-date" data-date></span>
+        <span class="day-tag">Día 1</span>
+        <span class="day-title">Laguna Amarga → Serón</span>
+        <span class="day-chevron"></span>
+      </summary>
+      <div class="day-body">
+        <div class="day-stats">
+          <span class="stat">~9–13 km</span>
+          <span class="stat">3–4,5 h</span>
+          <span class="stat">Dificultad baja</span>
+        </div>
+        <p class="day-desc">Bus a la portería, check-in con entrada CONAF y reservas. Inicio del circuito por estepa patagónica abierta.</p>
+        <ul class="tips">
+          <li>El bus desde Puerto Natales suele salir temprano (~7:00 am) — confirma el horario exacto la noche anterior.</li>
+          <li>Terreno llano y expuesto al viento: usa protector solar incluso con cielo nublado, el sol patagónico quema rápido.</li>
+          <li>Es común ver guanacos en este tramo — mantén distancia, son fauna silvestre protegida.</li>
+          <li>Llena las botellas de agua en los cursos de agua del camino; no hace falta cargar todo desde la entrada.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="day trek" data-offset="3">
+      <summary>
+        <span class="day-date" data-date></span>
+        <span class="day-tag">Día 2</span>
+        <span class="day-title">Serón → Dickson</span>
+        <span class="day-chevron"></span>
+      </summary>
+      <div class="day-body">
+        <div class="day-stats">
+          <span class="stat">~18–19 km</span>
+          <span class="stat">6–7 h</span>
+          <span class="stat">Dificultad media</span>
+        </div>
+        <p class="day-desc">La etapa más larga de la primera mitad del circuito, siguiendo el río Paine hacia el norte con vistas al Lago Paine y al glaciar Dickson al final.</p>
+        <ul class="tips">
+          <li class="warn">Sal apenas amanezca — es el día más largo antes del paso, y llegar de noche a Dickson complica instalar el campamento.</li>
+          <li>Hay un control obligatorio en la Guardería Coirón (~km 8,5): debes registrar el horario de paso y mostrar tus reservas de Dickson y Los Perros.</li>
+          <li>Aprovecha la parada en Coirón para almorzar — hay mesas y bancos.</li>
+          <li>El entorno de Dickson junto al lago es de los más lindos del circuito: si llegas con luz, camina hasta la orilla al atardecer.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="day trek" data-offset="4">
+      <summary>
+        <span class="day-date" data-date></span>
+        <span class="day-tag">Día 3</span>
+        <span class="day-title">Dickson → Los Perros</span>
+        <span class="day-chevron"></span>
+      </summary>
+      <div class="day-body">
+        <div class="day-stats">
+          <span class="stat">~12 km</span>
+          <span class="stat">4,5–6 h</span>
+          <span class="stat">Dificultad baja</span>
+        </div>
+        <p class="day-desc">Etapa corta y tranquila por bosque de lengas, con las primeras vistas del glaciar Los Perros al final del día.</p>
+        <ul class="tips">
+          <li>Día para ir sin apuro: aprovecha de secar equipo o lavar ropa si sale el sol.</li>
+          <li class="warn">Duerme temprano esta noche: el ascenso al Paso John Gardner del día siguiente debe iniciarse antes de las 7:00 am, según indica CONAF.</li>
+          <li>Deja lista y organizada la mochila antes de dormir — la salida temprana no da mucho margen en la oscuridad.</li>
+          <li>Consulta con el guardaparques de Los Perros el estado del paso y el clima antes de acostarte; a veces cierran el cruce por viento extremo.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="day hard" data-offset="5">
+      <summary>
+        <span class="day-date" data-date></span>
+        <span class="day-tag">Día 4</span>
+        <span class="day-title">Los Perros → Paso John Gardner → Grey</span>
+        <span class="day-chevron"></span>
+      </summary>
+      <div class="day-body">
+        <div class="day-stats">
+          <span class="stat">~15–18 km</span>
+          <span class="stat">8–10 h</span>
+          <span class="stat">Dificultad alta</span>
+        </div>
+        <p class="day-desc">El día más exigente del circuito: ascenso a través de bosque y roca suelta hasta el Paso John Gardner (~1.200 msnm), con vista al Campo de Hielo Sur y al glaciar Grey, seguido de un descenso largo y empinado.</p>
+        <ul class="tips">
+          <li class="warn">Sal antes de las 7:00 am — es un requisito de seguridad, no una sugerencia. CONAF puede restringir el acceso si sales más tarde.</li>
+          <li>Lleva ropa de abrigo extra en la mochila (no en el fondo): en la cima del paso el viento patagónico es extremo incluso en pleno verano.</li>
+          <li>Es un día largo sin reabastecimiento — lleva snacks energéticos a mano, no solo en el almuerzo.</li>
+          <li>El descenso hacia Grey es largo y castiga las rodillas: usa bastones si tienes, y baja con calma, sin apurarte por el cansancio.</li>
+          <li>Cruzarás puentes colgantes cerca del final — con viento fuerte pueden balancearse bastante, cruza de a uno.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="day trek" data-offset="6">
+      <summary>
+        <span class="day-date" data-date></span>
+        <span class="day-tag">Día 5</span>
+        <span class="day-title">Grey → Paine Grande</span>
+        <span class="day-chevron"></span>
+      </summary>
+      <div class="day-body">
+        <div class="day-stats">
+          <span class="stat">~11 km</span>
+          <span class="stat">4–5 h</span>
+          <span class="stat">Dificultad media</span>
+        </div>
+        <p class="day-desc">Tramo con buenas vistas al glaciar Grey y al Lago Pehoé, terreno más suave después del esfuerzo del día anterior.</p>
+        <ul class="tips">
+          <li>Buen día para fotos: hay miradores del glaciar poco después de salir de Grey.</li>
+          <li>Paine Grande tiene un mini-mercado con algo de stock — útil para un capricho, pero los precios triplican los de la ciudad.</li>
+          <li>El sector de Paine Grande y el Lago Pehoé es especialmente ventoso: asegura bien la carpa al instalarla.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="day trek" data-offset="7">
+      <summary>
+        <span class="day-date" data-date></span>
+        <span class="day-tag">Día 6</span>
+        <span class="day-title">Paine Grande → Francés</span>
+        <span class="day-chevron"></span>
+      </summary>
+      <div class="day-body">
+        <div class="day-stats">
+          <span class="stat">~13 km</span>
+          <span class="stat">4–5 h</span>
+          <span class="stat">Dificultad media</span>
+        </div>
+        <p class="day-desc">Entrada al Valle Francés, con opción de dejar la mochila grande en el campamento Italiano y subir sin peso hasta el Mirador Británico.</p>
+        <ul class="tips">
+          <li>Si tienen energía, la extensión al Mirador Británico suma ~7-8 h ida y vuelta desde Italiano — evalúen el cansancio acumulado antes de decidir.</li>
+          <li>Dejen la mochila grande asegurada en Italiano si suben al mirador; solo lleven lo esencial (agua, snacks, capa impermeable).</li>
+          <li>El Valle Francés concentra glaciares colgantes: es común escuchar y ver desprendimientos de hielo — un espectáculo, pero mantengan distancia de las zonas de avalancha señalizadas.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="day trek" data-offset="8">
+      <summary>
+        <span class="day-date" data-date></span>
+        <span class="day-tag">Día 7</span>
+        <span class="day-title">Francés → Cuernos</span>
+        <span class="day-chevron"></span>
+      </summary>
+      <div class="day-body">
+        <div class="day-stats">
+          <span class="stat">~9 km</span>
+          <span class="stat">2–3 h</span>
+          <span class="stat">Dificultad baja</span>
+        </div>
+        <p class="day-desc">Etapa corta bordeando el Lago Nordenskjöld, con vistas cercanas a los Cuernos del Paine.</p>
+        <ul class="tips">
+          <li>Día ideal para llegar temprano y descansar las piernas antes del tramo final.</li>
+          <li>Aprovechen la tarde libre para lavar y secar ropa si hay sol — Cuernos suele tener buen espacio para tender.</li>
+          <li>Es un buen momento para revisar cuánta comida les queda y racionar los últimos dos días si hace falta.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="day trek" data-offset="9">
+      <summary>
+        <span class="day-date" data-date></span>
+        <span class="day-tag">Día 8</span>
+        <span class="day-title">Cuernos → Chileno</span>
+        <span class="day-chevron"></span>
+      </summary>
+      <div class="day-body">
+        <div class="day-stats">
+          <span class="stat">~13 km</span>
+          <span class="stat">4–5 h</span>
+          <span class="stat">Dificultad media</span>
+        </div>
+        <p class="day-desc">Último tramo antes del cierre del circuito, dejándolos posicionados para el amanecer en las Torres al día siguiente.</p>
+        <ul class="tips">
+          <li>Definan esta noche si van a madrugar por el mirador Base Torres — condiciona la hora de dormir y cuánto empacan la noche anterior.</li>
+          <li>Revisen el pronóstico para el amanecer: con niebla o lluvia la vista de las Torres no vale la pena el madrugón.</li>
+          <li>Carguen la frontal y cualquier power bank esta noche, no en el último momento.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="day trek" data-offset="10">
+      <summary>
+        <span class="day-date" data-date></span>
+        <span class="day-tag">Día 9</span>
+        <span class="day-title">Chileno → Mirador Base Torres → Central</span>
+        <span class="day-chevron"></span>
+      </summary>
+      <div class="day-body">
+        <div class="day-stats">
+          <span class="stat">~4-5 h + mirador opcional</span>
+          <span class="stat">Dificultad media</span>
+        </div>
+        <p class="day-desc">Cierre del circuito. Opción de subir al amanecer al mirador Base Torres antes de bajar a Central para tomar el bus de regreso.</p>
+        <ul class="tips">
+          <li class="warn">Si suben al mirador, salen de madrugada (usualmente 4:30-5:00 am) — hace mucho frío antes del amanecer, lleven toda la ropa de abrigo que tengan.</li>
+          <li>El sendero al mirador tiene un tramo final de bloques de piedra, exigente con poca luz — usen la frontal hasta que aclare.</li>
+          <li>Calculen el horario del bus de salida desde Central antes de decidir cuánto tiempo se quedan arriba disfrutando la vista.</li>
+          <li>Bajen con calma: es el último tramo, pero las rodillas ya vienen cansadas de 8 días de trekking.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="day" data-offset="11">
+      <summary>
+        <span class="day-date" data-date></span>
+        <span class="day-tag">+1</span>
+        <span class="day-title">Puerto Natales — descanso</span>
+        <span class="day-chevron"></span>
+      </summary>
+      <div class="day-body">
+        <div class="day-stats"><span class="stat">Día libre</span></div>
+        <p class="day-desc">Día de descanso post-circuito. Ducha caliente larga, comida real y piernas en alto.</p>
+        <ul class="tips">
+          <li>Buen día para sumar la Cueva del Milodón (medio día) sin que afecte el circuito.</li>
+          <li>Laven y organicen el equipo húmedo antes de guardarlo en la mochila para el vuelo.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="day" data-offset="12">
+      <summary>
+        <span class="day-date" data-date></span>
+        <span class="day-tag">+2</span>
+        <span class="day-title">Puerto Natales → Punta Arenas → vuelo de regreso</span>
+        <span class="day-chevron"></span>
+      </summary>
+      <div class="day-body">
+        <div class="day-stats"><span class="stat">Bus ~3 h</span></div>
+        <p class="day-desc">Bus de regreso a Punta Arenas con margen suficiente antes del vuelo.</p>
+        <ul class="tips">
+          <li>Confirmen el horario del bus la noche anterior — en temporada alta puede haber más de una salida.</li>
+          <li>Dejen colchón de tiempo extra: el tráfico o algún imprevisto de última hora es más común de lo que parece.</li>
+        </ul>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<section id="gastos-mensuales">
+  <div class="eyebrow">Jul 2026 → ene 2027 · lo que hay que tener listo cada mes</div>
+  <h2 class="section-title">Gastos necesarios por mes</h2>
+  <p class="section-intro">No es un plan de ahorro sugerido — es lo que efectivamente hay que desembolsar cada mes según cuándo caen los pagos reales (campings, vuelos, entrada, hostal). Los primeros dos meses concentran el mayor gasto porque ahí se pagan campings y vuelos.</p>
+
+  <div class="bars">
+    <div class="bar-col"><div class="bar-amt">$95k</div><div class="bar peak" style="height:79%"></div></div>
+    <div class="bar-col"><div class="bar-amt">$105k</div><div class="bar peak" style="height:88%"></div></div>
+    <div class="bar-col"><div class="bar-amt">$100k</div><div class="bar peak" style="height:83%"></div></div>
+    <div class="bar-col"><div class="bar-amt">$85k</div><div class="bar" style="height:71%"></div></div>
+    <div class="bar-col"><div class="bar-amt">$70k</div><div class="bar" style="height:58%"></div></div>
+    <div class="bar-col"><div class="bar-amt">$75k</div><div class="bar" style="height:63%"></div></div>
+    <div class="bar-col"><div class="bar-amt">$90k</div><div class="bar" style="height:75%"></div></div>
+  </div>
+  <div class="bar-labels">
+    <div class="bar-label-col">Jul</div>
+    <div class="bar-label-col">Ago</div>
+    <div class="bar-label-col">Sep</div>
+    <div class="bar-label-col">Oct</div>
+    <div class="bar-label-col">Nov</div>
+    <div class="bar-label-col">Dic</div>
+    <div class="bar-label-col">Ene</div>
+  </div>
+
+  <div class="savings-total">
+    <div>
+      <div class="label">Total necesario por persona</div>
+      <div class="big">~$620.000 CLP</div>
+    </div>
+  </div>
+
+  <table class="month-table">
+    <thead><tr><th>Mes</th><th>Monto</th><th>Para qué</th></tr></thead>
+    <tbody>
+      <tr><td class="item">Julio 2026</td><td class="num">$95.000</td><td class="note">Reserva y pago de los primeros campings (Chileno, Central, Cuernos)</td></tr>
+      <tr><td class="item">Agosto 2026</td><td class="num">$105.000</td><td class="note">Resto de campings + inicio compra de vuelos</td></tr>
+      <tr><td class="item">Septiembre 2026</td><td class="num">$100.000</td><td class="note">Vuelos SCL–PUQ</td></tr>
+      <tr><td class="item">Octubre 2026</td><td class="num">$85.000</td><td class="note">Entrada CONAF</td></tr>
+      <tr><td class="item">Noviembre 2026</td><td class="num">$70.000</td><td class="note">Hostal Puerto Natales</td></tr>
+      <tr><td class="item">Diciembre 2026</td><td class="num">$75.000</td><td class="note">Comida + colchón de contingencia</td></tr>
+      <tr><td class="item">Enero 2027</td><td class="num">$90.000</td><td class="note">Gas, snacks finales, imprevistos</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="opciones">
+  <div class="eyebrow">Sin entrar al cronograma del trekking</div>
+  <h2 class="section-title">Opciones adicionales</h2>
+  <p class="section-intro">Para sumar si hay días extra antes o después del circuito.</p>
+  <div class="opt-groups">
+    <div class="opt-group">
+      <h3>Puerto Natales</h3>
+      <div class="opt">
+        <div class="opt-name">Cueva del Milodón</div>
+        <div class="opt-desc">Medio día, tour corto o en bicicleta. Restos de un perezoso prehistórico.</div>
+      </div>
+      <div class="opt">
+        <div class="opt-name">Cerro Benítez / Sierra Baguales</div>
+        <div class="opt-desc">CLP $49.000–185.000 con agencia. Paisaje geológico muy distinto al macizo del Paine, mucho menos concurrido.</div>
+      </div>
+      <div class="opt">
+        <div class="opt-name">Glaciar Perito Moreno (Argentina)</div>
+        <div class="opt-desc">Full day de 14 horas cruzando a El Calafate para ver las rupturas del glaciar.</div>
+      </div>
+    </div>
+    <div class="opt-group">
+      <h3>Punta Arenas</h3>
+      <div class="opt">
+        <div class="opt-name">Isla Magdalena</div>
+        <div class="opt-desc">Navegación de medio día por el Estrecho de Magallanes. En febrero aún hay colonia de pingüinos de Magallanes.</div>
+      </div>
+      <div class="opt">
+        <div class="opt-name">Fuerte Bulnes</div>
+        <div class="opt-desc">Excursión histórica al sur de la ciudad.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="notes" id="notas">
+  <div class="eyebrow" style="color:#D89A72;">Antes de pagar</div>
+  <h2 class="section-title">Notas finales</h2>
+  <ul>
+    <li><strong>Reserven el circuito antes que los vuelos.</strong> Es más fácil cambiar una fecha de avión que conseguir un camping agotado en temporada alta.</li>
+    <li>El circuito O solo se recorre en <strong>sentido antihorario</strong> y todas las noches deben estar reservadas antes de entrar al parque — no hay opción de improvisar sobre la marcha.</li>
+    <li><strong>Marquen la opción "residente chileno" al reservar</strong> en vertice.travel y lastorres.com — el sistema pide RUT o cédula de identidad para aplicar la tarifa nacional, que es bastante más baja que la de extranjero.</li>
+    <li>Confirmen el valor exacto de la entrada CONAF nacional directamente en <strong>pasesparques.cl</strong> cerca de la fecha de compra: el sistema cambió en mayo de 2026 y la tarifa específica del Circuito Macizo Paine no está del todo consolidada en fuentes públicas.</li>
+    <li>El calendario es una propuesta de referencia — ajústenlo con el selector de fecha una vez que sepan qué disponibilidad real encuentran en cada camping.</li>
+  </ul>
+</section>
+
+<div class="footer">
+  <span>Investigación actualizada al 13 de julio de 2026</span>
+  <span>Fuentes: vertice.travel · lastorres.com · conaf.cl · pasesparques.cl</span>
+</div>
+
+<script>
+  const DIAS_SEMANA = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+  const MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+
+  function formatDate(d){
+    return DIAS_SEMANA[d.getDay()] + ' ' + d.getDate() + ' ' + MESES[d.getMonth()];
+  }
+
+  function parseInputDate(value){
+    const [y,m,dd] = value.split('-').map(Number);
+    return new Date(y, m-1, dd);
+  }
+
+  function updateDates(){
+    const input = document.getElementById('startDate');
+    const start = parseInputDate(input.value);
+    const items = document.querySelectorAll('.day[data-offset]');
+    let lastDate = start;
+    items.forEach(el => {
+      const offset = parseInt(el.getAttribute('data-offset'), 10);
+      const d = new Date(start);
+      d.setDate(d.getDate() + offset);
+      lastDate = d;
+      const dateSpan = el.querySelector('[data-date]');
+      if(dateSpan){ dateSpan.textContent = formatDate(d); }
+    });
+    const rangeSpan = document.getElementById('rangeSpan');
+    if(rangeSpan){
+      rangeSpan.textContent = formatDate(start) + '  →  ' + formatDate(lastDate);
+    }
+  }
+
+  function nudgeDate(days){
+    const input = document.getElementById('startDate');
+    const d = parseInputDate(input.value);
+    d.setDate(d.getDate() + days);
+    const yyyy = d.getFullYear();
+    const mm = String(d.getMonth()+1).padStart(2,'0');
+    const dd = String(d.getDate()).padStart(2,'0');
+    input.value = yyyy + '-' + mm + '-' + dd;
+    updateDates();
+  }
+
+  function resetDate(){
+    document.getElementById('startDate').value = '2027-02-19';
+    updateDates();
+  }
+
+  document.getElementById('startDate').addEventListener('change', updateDates);
+  updateDates();
+</script>
+
+</body>
+</html>
