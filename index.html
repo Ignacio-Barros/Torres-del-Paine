@@ -38,7 +38,8 @@
     font-size:12px; letter-spacing:0.14em; text-transform:uppercase;
     color:var(--rust); font-weight:600;
   }
-  a{color:var(--glacier);}
+  a{color:var(--glacier); text-decoration-thickness: 1px; text-underline-offset: 3px;}
+  a:hover{color:var(--rust);}
 
   /* ---------- STICKY NAV / INDEX ---------- */
   .indexbar{
@@ -362,7 +363,7 @@
 <section class="first" id="reservas">
   <div class="eyebrow">Empezar por acá</div>
   <h2 class="section-title">Reservas ya abiertas</h2>
-  <p class="section-intro">La temporada 2026–2027 (la que toca) abrió reservas entre abril y junio de 2026 en Vértice Patagonia y Las Torres Patagonia. Es decir, <strong>hoy ya se puede y se debería estar reservando</strong> — los sitios que comparten el circuito W y O (Chileno, Central, Cuernos, Francés, Grey, Paine Grande) se agotan primero para fechas de enero-febrero. Todos los precios de esta página son <strong>tarifa nacional / residente chileno</strong>, distinta y más baja que la tarifa en dólares para extranjeros.</p>
+  <p class="section-intro">La temporada 2026–2027 (la que toca) abrió reservas entre abril y junio de 2026 en <a href="https://vertice.travel" target="_blank" rel="noopener">Vértice Patagonia</a> y <a href="https://lastorres.com" target="_blank" rel="noopener">Las Torres Patagonia</a>. Es decir, <strong>hoy ya se puede y se debería estar reservando</strong> — los sitios que comparten el circuito W y O (Chileno, Central, Cuernos, Francés, Grey, Paine Grande) se agotan primero para fechas de enero-febrero. Todos los precios de esta página son <strong>tarifa nacional / residente chileno</strong>, distinta y más baja que la tarifa en dólares para extranjeros.</p>
 </section>
 
 <section id="presupuesto">
@@ -464,20 +465,34 @@
   </div>
 
   <h3 style="font-family:'Big Shoulders Display', sans-serif; font-size:22px; text-transform:uppercase; margin-bottom:14px; color:var(--moss); border-bottom:1px solid var(--line); padding-bottom:8px;">Detalle y precio por sitio</h3>
+  
+  <div class="date-controls">
+    <div>
+      <label>Fecha de llegada a Punta Arenas (Día 0)</label>
+      <input type="date" class="date-sync input-campings" value="2027-02-26" onchange="updateDates(this)">
+    </div>
+    <div class="nudge-btns">
+      <button type="button" onclick="nudgeDate(-1, 'input-campings')">− 1 día</button>
+      <button type="button" onclick="nudgeDate(1, 'input-campings')">+ 1 día</button>
+      <button type="button" onclick="resetDate()">Reset 26 feb</button>
+    </div>
+    <div class="range-span span-campings"></div>
+  </div>
+
   <table>
     <thead>
       <tr><th>Prioridad</th><th>Camping</th><th>Operador</th><th>CLP/noche</th><th>Fecha reserva</th><th>Por qué ese orden</th></tr>
     </thead>
     <tbody>
-      <tr><td class="num" data-label="Prioridad">1</td><td class="item">Chileno</td><td class="note">Las Torres</td><td class="num" data-label="CLP">$23.000 pp</td><td class="num date-highlight" data-label="Fecha"><span class="camping-date" data-offset="9"></span> <span style="font-size:11px; color:var(--slate); font-weight:normal;">(Noche 8)</span></td><td class="note">Comparte demanda con el circuito W, es el más solicitado del parque</td></tr>
-      <tr><td class="num" data-label="Prioridad">2</td><td class="item">Central</td><td class="note">Las Torres</td><td class="num" data-label="CLP">$23.000 pp</td><td class="num" data-label="Fecha" style="color:var(--slate); font-size:12px;">No aplica en este itinerario</td><td class="note">Punto de entrada/salida, también usado por el W</td></tr>
-      <tr><td class="num" data-label="Prioridad">3</td><td class="item">Cuernos</td><td class="note">Las Torres</td><td class="num" data-label="CLP">$23.000 pp</td><td class="num date-highlight" data-label="Fecha"><span class="camping-date" data-offset="8"></span> <span style="font-size:11px; color:var(--slate); font-weight:normal;">(Noche 7)</span></td><td class="note">Alta demanda por su vista, compartido con el W</td></tr>
-      <tr><td class="num" data-label="Prioridad">4</td><td class="item">Francés</td><td class="note">Las Torres</td><td class="num" data-label="CLP">$23.000 pp</td><td class="num date-highlight" data-label="Fecha"><span class="camping-date" data-offset="7"></span> <span style="font-size:11px; color:var(--slate); font-weight:normal;">(Noche 6)</span></td><td class="note">Acceso al Valle Francés, también usado por el W</td></tr>
-      <tr><td class="num" data-label="Prioridad">5</td><td class="item">Grey</td><td class="note">Vértice</td><td class="num" data-label="CLP">~$9.500 pp</td><td class="num date-highlight" data-label="Fecha"><span class="camping-date" data-offset="5"></span> <span style="font-size:11px; color:var(--slate); font-weight:normal;">(Noche 4)</span></td><td class="note">Mirador del glaciar, muy pedido por trekkers del W</td></tr>
-      <tr><td class="num" data-label="Prioridad">6</td><td class="item">Paine Grande</td><td class="note">Vértice</td><td class="num" data-label="CLP">~$9.500 pp</td><td class="num date-highlight" data-label="Fecha"><span class="camping-date" data-offset="6"></span> <span style="font-size:11px; color:var(--slate); font-weight:normal;">(Noche 5)</span></td><td class="note">Nodo central del parque, también en ruta del W</td></tr>
-      <tr><td class="num" data-label="Prioridad">7</td><td class="item">Serón</td><td class="note">Las Torres</td><td class="num" data-label="CLP">$23.000 pp</td><td class="num date-highlight" data-label="Fecha"><span class="camping-date" data-offset="2"></span> <span style="font-size:11px; color:var(--slate); font-weight:normal;">(Noche 1)</span></td><td class="note">Exclusivo del O, algo menos demandado</td></tr>
-      <tr><td class="num" data-label="Prioridad">8</td><td class="item">Dickson</td><td class="note">Vértice</td><td class="num" data-label="CLP">~$9.500 pp</td><td class="num date-highlight" data-label="Fecha"><span class="camping-date" data-offset="3"></span> <span style="font-size:11px; color:var(--slate); font-weight:normal;">(Noche 2)</span></td><td class="note">Exclusivo del O</td></tr>
-      <tr><td class="num" data-label="Prioridad">9</td><td class="item">Los Perros</td><td class="note">Vértice</td><td class="num" data-label="CLP">~$9.500 pp</td><td class="num date-highlight" data-label="Fecha"><span class="camping-date" data-offset="4"></span> <span style="font-size:11px; color:var(--slate); font-weight:normal;">(Noche 3)</span></td><td class="note">Exclusivo del O, capacidad más reducida — no dejarlo para el final</td></tr>
+      <tr><td class="num" data-label="Prioridad">1</td><td class="item">Chileno</td><td class="note"><a href="https://lastorres.com" target="_blank" rel="noopener">Las Torres</a></td><td class="num" data-label="CLP">$23.000 pp</td><td class="num date-highlight" data-label="Fecha"><span class="camping-date" data-offset="9"></span> <span style="font-size:11px; color:var(--slate); font-weight:normal;">(Noche 8)</span></td><td class="note">Comparte demanda con el circuito W, es el más solicitado del parque</td></tr>
+      <tr><td class="num" data-label="Prioridad">2</td><td class="item">Central</td><td class="note"><a href="https://lastorres.com" target="_blank" rel="noopener">Las Torres</a></td><td class="num" data-label="CLP">$23.000 pp</td><td class="num" data-label="Fecha" style="color:var(--slate); font-size:12px;">No aplica en este itinerario</td><td class="note">Es el punto final tras bajar del Mirador Base Torres (Día 9). Desde aquí tomas el bus en la tarde de regreso a Puerto Natales, por lo que <strong>no es necesario pagar la noche</strong> para dormir ahí.</td></tr>
+      <tr><td class="num" data-label="Prioridad">3</td><td class="item">Cuernos</td><td class="note"><a href="https://lastorres.com" target="_blank" rel="noopener">Las Torres</a></td><td class="num" data-label="CLP">$23.000 pp</td><td class="num date-highlight" data-label="Fecha"><span class="camping-date" data-offset="8"></span> <span style="font-size:11px; color:var(--slate); font-weight:normal;">(Noche 7)</span></td><td class="note">Alta demanda por su vista, compartido con el W</td></tr>
+      <tr><td class="num" data-label="Prioridad">4</td><td class="item">Francés</td><td class="note"><a href="https://lastorres.com" target="_blank" rel="noopener">Las Torres</a></td><td class="num" data-label="CLP">$23.000 pp</td><td class="num date-highlight" data-label="Fecha"><span class="camping-date" data-offset="7"></span> <span style="font-size:11px; color:var(--slate); font-weight:normal;">(Noche 6)</span></td><td class="note">Acceso al Valle Francés, también usado por el W</td></tr>
+      <tr><td class="num" data-label="Prioridad">5</td><td class="item">Grey</td><td class="note"><a href="https://vertice.travel" target="_blank" rel="noopener">Vértice</a></td><td class="num" data-label="CLP">~$9.500 pp</td><td class="num date-highlight" data-label="Fecha"><span class="camping-date" data-offset="5"></span> <span style="font-size:11px; color:var(--slate); font-weight:normal;">(Noche 4)</span></td><td class="note">Mirador del glaciar, muy pedido por trekkers del W</td></tr>
+      <tr><td class="num" data-label="Prioridad">6</td><td class="item">Paine Grande</td><td class="note"><a href="https://vertice.travel" target="_blank" rel="noopener">Vértice</a></td><td class="num" data-label="CLP">~$9.500 pp</td><td class="num date-highlight" data-label="Fecha"><span class="camping-date" data-offset="6"></span> <span style="font-size:11px; color:var(--slate); font-weight:normal;">(Noche 5)</span></td><td class="note">Nodo central del parque, también en ruta del W</td></tr>
+      <tr><td class="num" data-label="Prioridad">7</td><td class="item">Serón</td><td class="note"><a href="https://lastorres.com" target="_blank" rel="noopener">Las Torres</a></td><td class="num" data-label="CLP">$23.000 pp</td><td class="num date-highlight" data-label="Fecha"><span class="camping-date" data-offset="2"></span> <span style="font-size:11px; color:var(--slate); font-weight:normal;">(Noche 1)</span></td><td class="note">Exclusivo del O, algo menos demandado</td></tr>
+      <tr><td class="num" data-label="Prioridad">8</td><td class="item">Dickson</td><td class="note"><a href="https://vertice.travel" target="_blank" rel="noopener">Vértice</a></td><td class="num" data-label="CLP">~$9.500 pp</td><td class="num date-highlight" data-label="Fecha"><span class="camping-date" data-offset="3"></span> <span style="font-size:11px; color:var(--slate); font-weight:normal;">(Noche 2)</span></td><td class="note">Exclusivo del O</td></tr>
+      <tr><td class="num" data-label="Prioridad">9</td><td class="item">Los Perros</td><td class="note"><a href="https://vertice.travel" target="_blank" rel="noopener">Vértice</a></td><td class="num" data-label="CLP">~$9.500 pp</td><td class="num date-highlight" data-label="Fecha"><span class="camping-date" data-offset="4"></span> <span style="font-size:11px; color:var(--slate); font-weight:normal;">(Noche 3)</span></td><td class="note">Exclusivo del O, capacidad más reducida — no dejarlo para el final</td></tr>
     </tbody>
   </table>
   <p class="rate-note">Vértice suele exigir reservar Dickson, Los Perros y Grey juntos (no se puede reservar solo uno de los tres). Tarifas para chilenos parten "desde $9.000" según su propia comunicación oficial; confirmar cada valor exacto al reservar en vertice.travel y lastorres.com, marcando la opción de residente/chileno para acceder al precio en CLP.</p>
@@ -490,15 +505,15 @@
 
   <div class="date-controls">
     <div>
-      <label for="startDate">Fecha de llegada a Punta Arenas (Día 0)</label>
-      <input type="date" id="startDate" value="2027-02-26">
+      <label>Fecha de llegada a Punta Arenas (Día 0)</label>
+      <input type="date" class="date-sync input-itin" value="2027-02-26" onchange="updateDates(this)">
     </div>
     <div class="nudge-btns">
-      <button type="button" onclick="nudgeDate(-1)">− 1 día</button>
-      <button type="button" onclick="nudgeDate(1)">+ 1 día</button>
+      <button type="button" onclick="nudgeDate(-1, 'input-itin')">− 1 día</button>
+      <button type="button" onclick="nudgeDate(1, 'input-itin')">+ 1 día</button>
       <button type="button" onclick="resetDate()">Reset 26 feb</button>
     </div>
-    <div class="range-span" id="rangeSpan"></div>
+    <div class="range-span span-itin"></div>
   </div>
 
   <div class="day-list" id="dayList">
@@ -933,7 +948,7 @@
   <ul>
     <li><strong>Conviene reservar el circuito antes que los vuelos.</strong> Es más fácil cambiar una fecha de avión que conseguir un camping agotado en temporada alta.</li>
     <li>El circuito O solo se recorre en <strong>sentido antihorario</strong> y todas las noches deben estar reservadas antes de entrar al parque — no hay opción de improvisar sobre la marcha.</li>
-    <li><strong>Es importante marcar la opción "residente chileno" al reservar</strong> en vertice.travel y lastorres.com — el sistema pide RUT o cédula de identidad para aplicar la tarifa nacional, que es bastante más baja que la de extranjero.</li>
+    <li><strong>Es importante marcar la opción "residente chileno" al reservar</strong> en <a href="https://vertice.travel" target="_blank" rel="noopener">vertice.travel</a> y <a href="https://lastorres.com" target="_blank" rel="noopener">lastorres.com</a> — el sistema pide RUT o cédula de identidad para aplicar la tarifa nacional, que es bastante más baja que la de extranjero.</li>
     <li>Conviene confirmar el valor exacto de la entrada CONAF nacional directamente en <strong>pasesparques.cl</strong> cerca de la fecha de compra: el sistema cambió en mayo de 2026 y la tarifa específica del Circuito Macizo Paine no está del todo consolidada en fuentes públicas.</li>
     <li>El calendario es una propuesta de referencia — se puede ajustar con el selector de fecha una vez que se sepa qué disponibilidad real hay en cada camping.</li>
   </ul>
@@ -941,7 +956,7 @@
 
 <div class="footer">
   <span>Investigación actualizada al 13 de julio de 2026</span>
-  <span>Fuentes: vertice.travel · lastorres.com · conaf.cl · pasesparques.cl</span>
+  <span>Fuentes: <a href="https://vertice.travel" target="_blank" rel="noopener">vertice.travel</a> · <a href="https://lastorres.com" target="_blank" rel="noopener">lastorres.com</a> · conaf.cl · pasesparques.cl</span>
 </div>
 
 <script>
@@ -957,9 +972,19 @@
     return new Date(y, m-1, dd);
   }
 
-  function updateDates(){
-    const input = document.getElementById('startDate');
-    const start = parseInputDate(input.value);
+  // Ahora recibe la referencia del input que desencadenó el cambio
+  function updateDates(sourceInput){
+    // Si no recibe un input en particular, usamos el primero que encontremos
+    const val = sourceInput ? sourceInput.value : document.querySelector('.date-sync').value;
+    
+    // Sincronizar todos los campos de fecha de la página
+    document.querySelectorAll('.date-sync').forEach(input => {
+      if(input !== sourceInput){
+        input.value = val;
+      }
+    });
+
+    const start = parseInputDate(val);
     
     // Actualizar las fechas del itinerario
     const items = document.querySelectorAll('.day[data-offset]');
@@ -982,29 +1007,35 @@
       el.textContent = formatDate(d);
     });
 
-    const rangeSpan = document.getElementById('rangeSpan');
-    if(rangeSpan){
-      rangeSpan.textContent = formatDate(start) + '  →  ' + formatDate(lastDate);
-    }
+    // Actualizar los textos de rango de fechas
+    const rangeText = formatDate(start) + '  →  ' + formatDate(lastDate);
+    document.querySelectorAll('.range-span').forEach(span => {
+      span.textContent = rangeText;
+    });
   }
 
-  function nudgeDate(days){
-    const input = document.getElementById('startDate');
+  function nudgeDate(days, className){
+    // Busca el input con la clase que pasamos para sumarle o restarle días
+    const input = document.querySelector('.' + className);
     const d = parseInputDate(input.value);
     d.setDate(d.getDate() + days);
     const yyyy = d.getFullYear();
     const mm = String(d.getMonth()+1).padStart(2,'0');
     const dd = String(d.getDate()).padStart(2,'0');
     input.value = yyyy + '-' + mm + '-' + dd;
-    updateDates();
+    
+    // Llama a updateDates pasando este input modificado para sincronizar todo
+    updateDates(input);
   }
 
   function resetDate(){
-    document.getElementById('startDate').value = '2027-02-26';
+    document.querySelectorAll('.date-sync').forEach(input => {
+      input.value = '2027-02-26';
+    });
     updateDates();
   }
 
-  document.getElementById('startDate').addEventListener('change', updateDates);
+  // Inicializar todo al cargar
   updateDates();
 </script>
 
