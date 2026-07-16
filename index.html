@@ -102,7 +102,7 @@
   /* ---------- SECTION SHELL ---------- */
   section{max-width:880px; margin:0 auto; padding:56px 24px; border-top:1px solid var(--line); scroll-margin-top:60px;}
   section.first{border-top:none; padding-top:8px;}
-  section.wide{max-width:1000px;}
+  section.wide{max-width:1050px;}
   h2.section-title{
     font-family:'Big Shoulders Display', sans-serif; text-transform:uppercase;
     font-size:38px; font-weight:700; margin:6px 0 6px; color:var(--ink);
@@ -123,6 +123,7 @@
   tfoot td{padding:16px 10px 0 0; font-weight:600; font-size:15px; border-top:2px solid var(--ink); border-bottom:none;}
   .total-row td{color:var(--rust);}
   .rate-note{margin-top:14px; font-size:13px; color:var(--slate); font-style:italic;}
+  .date-highlight{color:var(--rust); font-weight:500;}
 
   /* ---------- ITINERARY CONTROLS ---------- */
   .date-controls{
@@ -232,8 +233,6 @@
     margin:0 0 14px; color:var(--glacier); border-bottom:1px solid var(--line); padding-bottom:8px;
   }
   .checklist{list-style:none; margin:0 0 26px; padding:0; display:flex; flex-direction:column; gap:10px;}
-  
-  /* Nuevo estilo para los checkboxes interactivos */
   .checklist li{
     font-size:15px; color:var(--ink);
   }
@@ -432,7 +431,7 @@
   <p class="rate-note">Rango realista sin actividades adicionales (Milodón, Sierra Baguales, Isla Magdalena, Perito Moreno). El camping sale un poco más caro de lo esperado porque Las Torres subió su tarifa de "sitio camping" para chilenos a $23.000/noche en la temporada 26-27 — pero la entrada CONAF nacional compensa esa diferencia con creces frente a la tarifa de extranjero.</p>
 </section>
 
-<section id="campings">
+<section class="wide" id="campings">
   <div class="eyebrow">Estrategia de reservas vs Realidad</div>
   <h2 class="section-title">Orden de Reserva vs Orden de Ruta</h2>
   <p class="section-intro">El circuito O se camina obligatoriamente en <strong>sentido antihorario</strong>. Sin embargo, el orden en el que se deben <strong>reservar</strong> los campings es distinto al orden en el que se van a <strong>visitar</strong>. Esto se debe a que los campamentos compartidos con el circuito W se agotan mucho más rápido que los exclusivos del O.</p>
@@ -450,7 +449,7 @@
         <li><strong>Día 6:</strong> Francés</li>
         <li><strong>Día 7:</strong> Cuernos</li>
         <li><strong>Día 8:</strong> Chileno</li>
-        <li><strong>Día 9 (Cierre):</strong> Central</li>
+        <li><strong>Día 9 (Cierre):</strong> Central <em>(solo paso)</em></li>
       </ol>
     </div>
     <div class="opt-group">
@@ -467,18 +466,18 @@
   <h3 style="font-family:'Big Shoulders Display', sans-serif; font-size:22px; text-transform:uppercase; margin-bottom:14px; color:var(--moss); border-bottom:1px solid var(--line); padding-bottom:8px;">Detalle y precio por sitio</h3>
   <table>
     <thead>
-      <tr><th>Prioridad</th><th>Camping</th><th>Operador</th><th>CLP/noche</th><th>Por qué ese orden</th></tr>
+      <tr><th>Prioridad</th><th>Camping</th><th>Operador</th><th>CLP/noche</th><th>Fecha reserva</th><th>Por qué ese orden</th></tr>
     </thead>
     <tbody>
-      <tr><td class="num" data-label="Prioridad">1</td><td class="item">Chileno</td><td class="note">Las Torres</td><td class="num" data-label="CLP">$23.000 pp</td><td class="note">Comparte demanda con el circuito W, es el más solicitado del parque</td></tr>
-      <tr><td class="num" data-label="Prioridad">2</td><td class="item">Central</td><td class="note">Las Torres</td><td class="num" data-label="CLP">$23.000 pp</td><td class="note">Punto de entrada/salida, también usado por el W</td></tr>
-      <tr><td class="num" data-label="Prioridad">3</td><td class="item">Cuernos</td><td class="note">Las Torres</td><td class="num" data-label="CLP">$23.000 pp</td><td class="note">Alta demanda por su vista, compartido con el W</td></tr>
-      <tr><td class="num" data-label="Prioridad">4</td><td class="item">Francés</td><td class="note">Las Torres</td><td class="num" data-label="CLP">$23.000 pp</td><td class="note">Acceso al Valle Francés, también usado por el W</td></tr>
-      <tr><td class="num" data-label="Prioridad">5</td><td class="item">Grey</td><td class="note">Vértice</td><td class="num" data-label="CLP">~$9.500 pp</td><td class="note">Mirador del glaciar, muy pedido por trekkers del W</td></tr>
-      <tr><td class="num" data-label="Prioridad">6</td><td class="item">Paine Grande</td><td class="note">Vértice</td><td class="num" data-label="CLP">~$9.500 pp</td><td class="note">Nodo central del parque, también en ruta del W</td></tr>
-      <tr><td class="num" data-label="Prioridad">7</td><td class="item">Serón</td><td class="note">Las Torres</td><td class="num" data-label="CLP">$23.000 pp</td><td class="note">Exclusivo del O, algo menos demandado</td></tr>
-      <tr><td class="num" data-label="Prioridad">8</td><td class="item">Dickson</td><td class="note">Vértice</td><td class="num" data-label="CLP">~$9.500 pp</td><td class="note">Exclusivo del O</td></tr>
-      <tr><td class="num" data-label="Prioridad">9</td><td class="item">Los Perros</td><td class="note">Vértice</td><td class="num" data-label="CLP">~$9.500 pp</td><td class="note">Exclusivo del O, capacidad más reducida — no dejarlo para el final</td></tr>
+      <tr><td class="num" data-label="Prioridad">1</td><td class="item">Chileno</td><td class="note">Las Torres</td><td class="num" data-label="CLP">$23.000 pp</td><td class="num date-highlight" data-label="Fecha"><span class="camping-date" data-offset="9"></span> <span style="font-size:11px; color:var(--slate); font-weight:normal;">(Noche 8)</span></td><td class="note">Comparte demanda con el circuito W, es el más solicitado del parque</td></tr>
+      <tr><td class="num" data-label="Prioridad">2</td><td class="item">Central</td><td class="note">Las Torres</td><td class="num" data-label="CLP">$23.000 pp</td><td class="num" data-label="Fecha" style="color:var(--slate); font-size:12px;">No aplica en este itinerario</td><td class="note">Punto de entrada/salida, también usado por el W</td></tr>
+      <tr><td class="num" data-label="Prioridad">3</td><td class="item">Cuernos</td><td class="note">Las Torres</td><td class="num" data-label="CLP">$23.000 pp</td><td class="num date-highlight" data-label="Fecha"><span class="camping-date" data-offset="8"></span> <span style="font-size:11px; color:var(--slate); font-weight:normal;">(Noche 7)</span></td><td class="note">Alta demanda por su vista, compartido con el W</td></tr>
+      <tr><td class="num" data-label="Prioridad">4</td><td class="item">Francés</td><td class="note">Las Torres</td><td class="num" data-label="CLP">$23.000 pp</td><td class="num date-highlight" data-label="Fecha"><span class="camping-date" data-offset="7"></span> <span style="font-size:11px; color:var(--slate); font-weight:normal;">(Noche 6)</span></td><td class="note">Acceso al Valle Francés, también usado por el W</td></tr>
+      <tr><td class="num" data-label="Prioridad">5</td><td class="item">Grey</td><td class="note">Vértice</td><td class="num" data-label="CLP">~$9.500 pp</td><td class="num date-highlight" data-label="Fecha"><span class="camping-date" data-offset="5"></span> <span style="font-size:11px; color:var(--slate); font-weight:normal;">(Noche 4)</span></td><td class="note">Mirador del glaciar, muy pedido por trekkers del W</td></tr>
+      <tr><td class="num" data-label="Prioridad">6</td><td class="item">Paine Grande</td><td class="note">Vértice</td><td class="num" data-label="CLP">~$9.500 pp</td><td class="num date-highlight" data-label="Fecha"><span class="camping-date" data-offset="6"></span> <span style="font-size:11px; color:var(--slate); font-weight:normal;">(Noche 5)</span></td><td class="note">Nodo central del parque, también en ruta del W</td></tr>
+      <tr><td class="num" data-label="Prioridad">7</td><td class="item">Serón</td><td class="note">Las Torres</td><td class="num" data-label="CLP">$23.000 pp</td><td class="num date-highlight" data-label="Fecha"><span class="camping-date" data-offset="2"></span> <span style="font-size:11px; color:var(--slate); font-weight:normal;">(Noche 1)</span></td><td class="note">Exclusivo del O, algo menos demandado</td></tr>
+      <tr><td class="num" data-label="Prioridad">8</td><td class="item">Dickson</td><td class="note">Vértice</td><td class="num" data-label="CLP">~$9.500 pp</td><td class="num date-highlight" data-label="Fecha"><span class="camping-date" data-offset="3"></span> <span style="font-size:11px; color:var(--slate); font-weight:normal;">(Noche 2)</span></td><td class="note">Exclusivo del O</td></tr>
+      <tr><td class="num" data-label="Prioridad">9</td><td class="item">Los Perros</td><td class="note">Vértice</td><td class="num" data-label="CLP">~$9.500 pp</td><td class="num date-highlight" data-label="Fecha"><span class="camping-date" data-offset="4"></span> <span style="font-size:11px; color:var(--slate); font-weight:normal;">(Noche 3)</span></td><td class="note">Exclusivo del O, capacidad más reducida — no dejarlo para el final</td></tr>
     </tbody>
   </table>
   <p class="rate-note">Vértice suele exigir reservar Dickson, Los Perros y Grey juntos (no se puede reservar solo uno de los tres). Tarifas para chilenos parten "desde $9.000" según su propia comunicación oficial; confirmar cada valor exacto al reservar en vertice.travel y lastorres.com, marcando la opción de residente/chileno para acceder al precio en CLP.</p>
@@ -487,17 +486,17 @@
 <section class="wide" id="itinerario">
   <div class="eyebrow">Ajustable · cambiar la fecha o usar los botones</div>
   <h2 class="section-title">Calendario del viaje</h2>
-  <p class="section-intro">13 días en total: 2 de aclimatación/compras en Puerto Natales, 9 días de circuito (8 noches de camping), 2 de cierre. Al cambiar la fecha de llegada a Punta Arenas, el resto del calendario se recalcula solo.</p>
+  <p class="section-intro">13 días en total: 2 de aclimatación/compras en Puerto Natales, 9 días de circuito (8 noches de camping), 2 de cierre. Al cambiar la fecha de llegada a Punta Arenas, el resto del calendario y la tabla de reservas se recalcula solo.</p>
 
   <div class="date-controls">
     <div>
       <label for="startDate">Fecha de llegada a Punta Arenas (Día 0)</label>
-      <input type="date" id="startDate" value="2027-02-19">
+      <input type="date" id="startDate" value="2027-02-26">
     </div>
     <div class="nudge-btns">
       <button type="button" onclick="nudgeDate(-1)">− 1 día</button>
       <button type="button" onclick="nudgeDate(1)">+ 1 día</button>
-      <button type="button" onclick="resetDate()">Reset 19 feb</button>
+      <button type="button" onclick="resetDate()">Reset 26 feb</button>
     </div>
     <div class="range-span" id="rangeSpan"></div>
   </div>
@@ -961,6 +960,8 @@
   function updateDates(){
     const input = document.getElementById('startDate');
     const start = parseInputDate(input.value);
+    
+    // Actualizar las fechas del itinerario
     const items = document.querySelectorAll('.day[data-offset]');
     let lastDate = start;
     items.forEach(el => {
@@ -971,6 +972,16 @@
       const dateSpan = el.querySelector('[data-date]');
       if(dateSpan){ dateSpan.textContent = formatDate(d); }
     });
+
+    // Actualizar las fechas de la tabla de reservas
+    const campingDates = document.querySelectorAll('.camping-date[data-offset]');
+    campingDates.forEach(el => {
+      const offset = parseInt(el.getAttribute('data-offset'), 10);
+      const d = new Date(start);
+      d.setDate(d.getDate() + offset);
+      el.textContent = formatDate(d);
+    });
+
     const rangeSpan = document.getElementById('rangeSpan');
     if(rangeSpan){
       rangeSpan.textContent = formatDate(start) + '  →  ' + formatDate(lastDate);
@@ -989,7 +1000,7 @@
   }
 
   function resetDate(){
-    document.getElementById('startDate').value = '2027-02-19';
+    document.getElementById('startDate').value = '2027-02-26';
     updateDates();
   }
 
